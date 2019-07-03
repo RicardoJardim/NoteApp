@@ -1,0 +1,16 @@
+<Alloy>
+	<Window id="create_subnotes">
+		<View id="view_create">
+			<Label id="create">New Note</Label> 
+				
+			<Label class="tinylabel">Title</Label> 
+			<TextField id="title"/>
+			
+			<Label class="tinylabel">Content</Label> 
+			<TextArea id="cont" class="AreaText"/>
+			<Button id="save" onClick="saveNote" class="errase">
+				SAVE
+			</Button>
+		</View>
+	</Window>
+</Alloy>

@@ -1,0 +1,13 @@
+<Alloy>
+	<Window id="view_subnotes">
+		<View id="viewsub">
+			<Label id="name"/>
+			<View id="viewtext">				
+				<Label id="textArea"/>
+			</View>
+		<Button id="erase" onClick="erase" class="errase">
+			Erase note
+		</Button>
+		</View>
+	</Window>
+</Alloy>

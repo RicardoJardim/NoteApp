@@ -1,0 +1,20 @@
+<Alloy>
+	<Window id="create_note">
+		<View id="view_create">
+			<Label id="create">New Note</Label> 
+				
+			<Label class="tinylabel">Title</Label> 
+			<TextField id="title"/>
+			
+			<Label class="tinylabel">Description</Label> 
+			<TextArea id="descrip" class="AreaText"/>
+			<View id="picker_view">
+				<Label class="tinylabel">Type</Label> 
+				<Picker id="picker"/>
+			</View>
+			<Button id="save" onClick="saveNote" class="errase">
+				SAVE
+			</Button>
+		</View>
+	</Window>
+</Alloy>

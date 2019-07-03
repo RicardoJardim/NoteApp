@@ -1,0 +1,47 @@
+"#view_subnotes":{
+	layout: "vertical",
+}
+
+"#viewsub":{
+	layout: "vertical",
+	top:"2%",
+	width: '90%',
+	height: '96%',
+	borderRadius: 10,
+	elevation: 10,
+}
+
+"#name":{
+	color: "black",
+	font: {
+		fontWeight: "semibold",
+		fontSize: 30,
+		fontFamily: 'Helvetica Neue'
+	},
+}
+
+"#viewtext":{
+	borderRadius: 10,
+	top:"1%",
+	width: '96%',
+	height: '80%',
+	backgroundColor: "white",
+	borderColor: "black",
+	layout: "vertical"
+}
+
+
+"#textArea":{
+	width: '96%',
+	height: '100%',
+	color:"black",
+	font: {
+		fontWeight: "normal",
+		fontSize: 26,
+		fontFamily: 'Helvetica Neue'
+	},
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
+	includeFontPadding : true
+}
+
+

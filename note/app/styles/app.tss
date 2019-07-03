@@ -1,0 +1,118 @@
+/*
+
+This is your global styles file. Selectors and rules you define
+here will be applied throughout your app. However, these rules
+have the lowest priority of any style settings.
+
+For more information, see the "Style Priorities" section of
+http://docs.appcelerator.com/platform/latest/#!/guide/Alloy_Styles_and_Themes
+
+For example, the following would apply to all labels, windows,
+and text fields (depending on platform) in your app unless you
+overrode the settings with other TSS, XML, or JS settings:
+
+'Label[platform=android,windows]': {
+	color: '#000' // all platforms except Android and Windows default to black
+}
+
+'TextField[platform=android]': {
+	height: Ti.UI.SIZE
+}
+
+*/
+
+'Window': {
+	backgroundColor: '#cccccc', // white background instead of default transparent or black
+	orientationModes: [
+		Ti.UI.PORTRAIT
+	]
+}
+
+
+".addview":{
+	top:"2%",
+	backgroundColor:"#2eb82e",
+	layout: 'composite',
+	width: '95%',
+	height: '10%',
+	color:"black",
+	borderRadius: "5",
+	font: {
+	fontSize: 18,
+	fontWeight: "bold",
+	},
+}
+
+".addnote":{
+	right:"50%",
+	color: "black",
+	font: {
+		fontWeight: "semibold",
+		fontSize: 32,
+		fontFamily: 'Helvetica Neue'
+	},
+}
+
+".addbutton":{
+	left:"60%",
+	title: "ADD",
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE
+}
+
+
+".errase":{
+	backgroundColor: "red",
+	width: "60%",
+	top:"1%",
+	color:"#ffffff",
+	borderRadius: "5",
+	font: {
+	fontSize: 18,
+	fontWeight: "bold",
+	},
+}
+
+'TextField':{
+	backgroundColor: "#cccccc",
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_BEZEL,
+	borderColor:"black",
+    keyboardToolbarHeight: 20,
+    borderWidth : 2,
+	width: 300,
+	height: 50,
+	color: "black",
+	borderRadius: 14,
+	font: {
+		fontSize: 20,
+		fontFamily: 'Helvetica Neue',
+		
+	}
+}
+
+".tinylabel":{
+	color: "black",
+	left:"5%",
+	font: {
+		fontWeight: "semibold",
+		fontSize: 20 ,
+		fontFamily: 'Helvetica Neue'
+	},
+}
+
+".AreaText":{
+	backgroundColor: "#cccccc",
+	borderRadius: 14,
+	width: 300,
+	height: '60%',
+	borderColor: "black",
+	color: "black",
+	borderWidth : 2,
+	font: {
+		fontSize: 20,
+		fontFamily: 'Helvetica Neue',
+		
+	}
+
+}
+

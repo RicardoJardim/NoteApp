@@ -1,0 +1,52 @@
+"#create_note":{
+	layout:'vertical',
+}
+
+"#view_create":{
+	backgroundColor:"#0099ff",
+	layout: "vertical",
+	top:"2%",
+	width: '90%',
+	height: '96%',
+	borderRadius: 10,
+	elevation: 10,
+}
+
+
+"#create":{
+	color: "black",
+	font: {
+		fontWeight: "semibold",
+		fontSize: 30,
+		fontFamily: 'Helvetica Neue'
+	},
+}
+
+"#save":{
+	top: "2%",
+	backgroundColor: "#2eb82e",
+}
+
+"#picker_view":{
+	top: "2%",
+	backgroundColor: "#0099ff",
+	layout: "composite",
+	height: "15%"
+}
+
+"#descrip":{
+	height: '40%',
+}
+
+"#picker": {
+	backgroundColor: "#000080",
+	color:"#fff",
+	borderRadius: "5",
+	width: 140,
+	heigth: 100,
+	font: {
+		fontSize: 18,
+		fontFamily: 'Helvetica Neue'
+	},
+	right: "10%",
+}

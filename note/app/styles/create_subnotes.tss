@@ -1,0 +1,27 @@
+"#create_note":{
+	layout:'vertical',
+}
+
+"#view_create":{
+	layout: "vertical",
+	top:"2%",
+	width: '90%',
+	height: '96%',
+	borderRadius: 10,
+	elevation: 10,
+}
+
+
+"#create":{
+	color: "black",
+	font: {
+		fontWeight: "semibold",
+		fontSize: 30,
+		fontFamily: 'Helvetica Neue'
+	},
+}
+
+"#save":{
+	top:"2%",
+	backgroundColor: "#2eb82e",
+}

@@ -1,0 +1,12 @@
+<Alloy>
+	<Window id="sub_notes">
+	<View id="add_view" class="addview">		
+			<Label id="add_note" class="addnote"/>
+			<Button id="add_button" onClick="add_subnotes" class="addbutton"/>
+		</View>
+	<ScrollView id="scrollView" showVerticalScrollIndicator="true" layout="vertical" top="1%" height="77%" width="98%"/>	
+		<Button id="erase" onClick="erase" class="errase">
+			Erase main note
+		</Button>
+	</Window>
+</Alloy>
