@@ -15,22 +15,22 @@ function goBack(){
 
 
 function inicializa(){
-	var colArray = Ti.App.Properties.getList('types');
-
+	var colArray = JSON.parse(Ti.App.Properties.getString('type'));
 	var picks = [];
-	
-	for( var chave in colArray){
-		picks.push(Ti.UI.createPickerRow({title:colArray[chave].type , id:colArray[chave].id}));
-	}
-	$.picker.add(picks);
-	
+
+		for( var chave in colArray["types"]){
+			
+			picks.push(Ti.UI.createPickerRow({title:colArray["types"][chave].type , id:colArray["types"][chave].id}));
+		}	
+
+	$.picker.add(picks);	
 }
 
 $.picker.selectionIndicator = true;
 inicializa();
 
 // mudar o estado interno
-var idPicker = null;
+var idPicker = 1;
 $.picker.addEventListener("change", function(e){
 	Ti.API.info(e.row.title);
 	idPicker = e.row.id;

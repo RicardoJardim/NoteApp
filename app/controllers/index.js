@@ -15,18 +15,17 @@ while(result.isValidRow()){
 		var tipo = result.fieldByName('type');
 		
 		console.log("Title: " + title + " Description: " + desc + " Type: " + tipo);
-		var colArray = Ti.App.Properties.getList('types');
-	
-		for( var chave in colArray){
-			if(tipo == colArray[chave].id){
-				var colors = colArray[chave].color;
+		var colArray = JSON.parse(Ti.App.Properties.getString('type'));
+		for( var chave in colArray["types"]){
+			if(tipo == colArray["types"][chave].id){
+				var colors = colArray["types"][chave].color;
 				console.log(colors);
 			}
 		}	
 	
 		var view = Ti.UI.createView({
-			cor: colors,
 			id: ids,
+			type: tipo,
 			borderRadius: 12,
 			elevation: 10,
 			layout: 'vertical',
@@ -63,20 +62,24 @@ while(result.isValidRow()){
 		view.add(label1);
 		view.add(label2);
 		
-		view.addEventListener("longclick", function(e){
-			console.log(e.source.id);
-			console.log(e.source.cor);
-			var args =[e.source.id,e.source.cor];
-			var next_win = Alloy.createController('sub_notes',args).getView();
-			next_win.open();
-			next_win = null;
-			$.index.close();
-		});
 		$.scrollView.add(view);
-		
 		result.next();
 }
 
+
+$.scrollView.addEventListener("longclick", function(e){
+	
+	console.log(e.source.id);
+	console.log(e.source.type);
+	console.log(e.source.apiName);
+	/*
+	var args =[e.source.id,e.source.type];
+	var next_win = Alloy.createController('sub_notes',args).getView();
+	next_win.open();
+	next_win = null;
+	$.index.close();*/
+});
+		
 $.index.open();
 
 // CANT GO BACK

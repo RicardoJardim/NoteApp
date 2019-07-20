@@ -10,11 +10,15 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
-var types =[
-   	{id:1, type: "project",	color: "#ffff00"},
-  	{id:2,type: "UMa",color: '#cc0000'},
- 	{id:3,type: "M-iti",color: '#002db3'},
- 	{id:4,type:"random",color: '#cc6600' }
-];
+var obj = {
+	"types":[
+			{id:1,type:"project",color:"#ffff00"},
+			{id:2,type:"UMa",color:'#cc0000'},
+		 	{id:3,type:"M-iti",color:'#002db3'},
+		 	{id:4,type:"random",color:'#cc6600' }
+		]
+};
 
-Ti.App.Properties.setList('types',types);
+Ti.App.Properties.setString('type', JSON.stringify(obj));
+
+

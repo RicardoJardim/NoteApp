@@ -4,7 +4,16 @@ console.log(args);
 var alerted = require('alert');
 var database = require("database_js");
 
-$.view_create.backgroundColor = args[1];
+var colArray = JSON.parse(Ti.App.Properties.getString('type'));
+for( var chave in colArray["types"]){
+	if(args[1] == colArray["types"][chave].id){
+		var colors = colArray["types"][chave].color;
+		console.log(colors);
+	}
+}	
+
+
+$.view_create.backgroundColor = colors;
 
 $.create_subnotes.addEventListener("android:back", function(){
 		goBack();
