@@ -79,7 +79,7 @@ overrode the settings with other TSS, XML, or JS settings:
 	borderColor:"black",
     keyboardToolbarHeight: 20,
     borderWidth : 2,
-	width: 300,
+	width: "90%",
 	height: 50,
 	color: "black",
 	borderRadius: 14,
@@ -103,7 +103,7 @@ overrode the settings with other TSS, XML, or JS settings:
 ".AreaText":{
 	backgroundColor: "#cccccc",
 	borderRadius: 14,
-	width: 300,
+	width: "90%",
 	height: '60%',
 	borderColor: "black",
 	color: "black",

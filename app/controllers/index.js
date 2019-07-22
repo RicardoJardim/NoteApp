@@ -67,17 +67,20 @@ while(result.isValidRow()){
 }
 
 
-$.scrollView.addEventListener("longclick", function(e){
+$.scrollView.addEventListener("click", function(e){
 	
-	console.log(e.source.id);
-	console.log(e.source.type);
+	
 	console.log(e.source.apiName);
-	/*
-	var args =[e.source.id,e.source.type];
-	var next_win = Alloy.createController('sub_notes',args).getView();
-	next_win.open();
-	next_win = null;
-	$.index.close();*/
+	if( e.source.apiName = "Ti.UI.View"){
+		console.log(e.source.id);
+		console.log(e.source.type);
+		var args =[e.source.id,e.source.type];
+		var next_win = Alloy.createController('sub_notes',args).getView();
+		next_win.open();
+		next_win = null;
+		$.index.close();
+	}
+	
 });
 		
 $.index.open();
