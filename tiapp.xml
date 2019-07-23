@@ -1,65 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ti:app 
-  xmlns:ti="http://ti.appcelerator.org">
-  <id>com.ricardo.notes</id>
-  <name>Note</name>
-  <version>1.0</version>
-  <publisher>ricar</publisher>
-  <url/>
-  <description>undefined</description>
-  <copyright>2019 by ricar</copyright>
-  <icon>appicon.png</icon>
-  <fullscreen>false</fullscreen>
-  <navbar-hidden>false</navbar-hidden>
-  <analytics>false</analytics>
-  <guid>4482bdce-4ec4-46e0-9444-f0e8799acb4b</guid>
-  <property name="ti.ui.defaultunit" type="string">dp</property>
-  <property name="run-on-main-thread" type="bool">true</property>
-  <ios>
-    <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
-    <use-app-thinning>true</use-app-thinning>
-    <plist>
-      <dict>
-        <key>UISupportedInterfaceOrientations~iphone</key>
-        <array>
-          <string>UIInterfaceOrientationPortrait</string>
-        </array>
-        <key>UISupportedInterfaceOrientations~ipad</key>
-        <array>
-          <string>UIInterfaceOrientationPortrait</string>
-          <string>UIInterfaceOrientationPortraitUpsideDown</string>
-          <string>UIInterfaceOrientationLandscapeLeft</string>
-          <string>UIInterfaceOrientationLandscapeRight</string>
-        </array>
-        <key>UIRequiresPersistentWiFi</key>
-        <false/>
-        <key>UIPrerenderedIcon</key>
-        <false/>
-        <key>UIStatusBarHidden</key>
-        <false/>
-        <key>UIStatusBarStyle</key>
-        <string>UIStatusBarStyleDefault</string>
-      </dict>
-    </plist>
-  </ios>
-  <android 
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <manifest android:versionCode="1" 
-      xmlns:android="http://schemas.android.com/apk/res/android">
-      <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="26"/>
-      <application android:theme="@style/Theme.AppCompat.NoTitleBar"/>
-    </manifest>
-  </android>
-  <modules/>
-  <deployment-targets>
-    <target device="iphone">false</target>
-    <target device="ipad">false</target>
-    <target device="android">true</target>
-    <target device="windows">false</target>
-  </deployment-targets>
-  <sdk-version>7.0.0.GA</sdk-version>
-  <plugins>
-    <plugin version="1.0">ti.alloy</plugin>
-  </plugins>
-  <property name="appc-app-id" type="string">5d36f04280b1021d5bcf8dc8</property>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+    <id>com.ricardo.notes</id>
+    <name>NoteApp</name>
+    <version>1.0</version>
+    <publisher>ricar</publisher>
+    <url/>
+    <description>undefined</description>
+    <copyright>2019 by ricar</copyright>
+    <icon>appicon.png</icon>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>false</navbar-hidden>
+    <analytics>false</analytics>
+    <guid>4482bdce-4ec4-46e0-9444-f0e8799acb4b</guid>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
+    <property name="run-on-main-thread" type="bool">true</property>
+    <ios>
+        <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
+        <use-app-thinning>true</use-app-thinning>
+        <plist>
+            <dict>
+                <key>UISupportedInterfaceOrientations~iphone</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                </array>
+                <key>UISupportedInterfaceOrientations~ipad</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                    <string>UIInterfaceOrientationPortraitUpsideDown</string>
+                    <string>UIInterfaceOrientationLandscapeLeft</string>
+                    <string>UIInterfaceOrientationLandscapeRight</string>
+                </array>
+                <key>UIRequiresPersistentWiFi</key>
+                <false/>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+                <key>UIStatusBarHidden</key>
+                <false/>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleDefault</string>
+            </dict>
+        </plist>
+    </ios>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+        <manifest android:versionCode="1" xmlns:android="http://schemas.android.com/apk/res/android">
+            <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="26"/>
+            <application android:theme="@style/Theme.AppCompat.NoTitleBar"/>
+        </manifest>
+    </android>
+    <modules/>
+    <deployment-targets>
+        <target device="iphone">false</target>
+        <target device="ipad">false</target>
+        <target device="android">true</target>
+        <target device="windows">false</target>
+    </deployment-targets>
+    <sdk-version>8.0.2.GA</sdk-version>
+    <plugins>
+        <plugin version="1.0">ti.alloy</plugin>
+    </plugins>
+    <property name="appc-app-id" type="string">5d36f04280b1021d5bcf8dc8</property>
 </ti:app>
