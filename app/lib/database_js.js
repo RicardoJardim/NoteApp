@@ -84,7 +84,6 @@ exports.database_call_algorithm = function(query,vect) {
 //RETORNA true ou false indicando se existe ou nao
 exports.database_check= function(query)
 {
-	var boll = false;
 	console.log('called database_call from database.js');
 	var dbOpen = Ti.Database.open('database');
 
@@ -95,12 +94,10 @@ exports.database_check= function(query)
 		rs.field(0);
 		
 	}
-	catch(e){
-		boll = false;	
-		return boll;
-	}
-		boll = true;		
+	catch(e){	
+		return false;
+	}		
 		dbOpen.close();
-		return boll;
+		return true;
 	
 };
