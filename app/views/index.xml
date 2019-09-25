@@ -1,9 +1,4 @@
 <Alloy>
 	<Window id="index">
-		<View id="add_view" class="addview">		
-			<Label id="add_note" class="addnote"> ADD Note</Label>
-			<Button id="add_button" class="addbutton"/>
-		</View>
-	<ScrollView id="scrollView" showVerticalScrollIndicator="true" layout="vertical" top= "1%" height="86%" width="98%"/>	
 	</Window>
 </Alloy>

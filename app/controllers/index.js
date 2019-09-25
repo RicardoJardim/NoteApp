@@ -3,72 +3,85 @@ var database = require("database_js");
 
 database.install();
 
+//-------------------------
+//LEFT VIEW
+var leftView = Ti.UI.createView({ backgroundColor:'red' });
 
-var query = "SELECT * FROM note";
+//CENTER VIEW WITH TOP BOTTON AND SCROLLVIEW
+var overallView = Ti.UI.createView({ });
 
-var result = database.database_call(query);
 
-while(result.isValidRow()){
-		var ids = result.fieldByName('id');
-		var title = result.fieldByName('title');
-		var desc = result.fieldByName('description');
-		var tipo = result.fieldByName('type');
+var topView = Ti.UI.createView({
+	top:1,
+	height: 105,
+	elevation :10,
+	backgroundColor:"#cccccc",
+});
+
+
+//TOP BOTTON
+var btn = Ti.UI.createButton({ backgroundImage: "/settings.png", top:"3%" , left:"5%", width:"12%", height:"35%"});
+topView.add(btn);
+
+//Search bar
+var search = Titanium.UI.createSearchBar({ color:"black",focusable:true,width:"98%",borderColor:"black",barColor:'#ffffff', showCancel:true, height:50, bottom:1,hintText:"Search by note", hintTextColor:"#cccccc" });
+topView.add(search);
+
+
+search.addEventListener("change", function(e) {
+
+	console.log(search.value);
+
+	if (search.value == "") {
+		var query = "SELECT note.*,category.color FROM note,category WHERE note.category_id = category.id";
+		populate(query);
+	} else {
+		scroolView.setData([]);
+		var query = 'SELECT note.*,category.color FROM note,category WHERE note.category_id = category.id AND note.title LIKE "%' + search.value + '%" ';
 		
-		console.log("Title: " + title + " Description: " + desc + " Type: " + tipo);
-		var colArray = JSON.parse(Ti.App.Properties.getString('type'));
-		for( var chave in colArray["types"]){
-			if(tipo == colArray["types"][chave].id){
-				var colors = colArray["types"][chave].color;
-				console.log(colors);
-			}
-		}	
+		if (database.database_check(query)) {			
+			populate(query);
+		}
+	}
+		
+});
+
+//TOP BOTTON
+var btn2 = Ti.UI.createButton({ backgroundImage: "/add.png" , top:"3%" , right:"4%", width:"12%", height:"35%"});
+topView.add(btn2);
+//TOP BOTTON
+var addText = Ti.UI.createLabel({ text:"Add Note" , top:"3%" ,color:"black", right:"18%",font: {fontSize: 26,fontFamily: 'Helvetica Neue'},	});
+topView.add(addText);
+
+btn2.addEventListener("click", function(){
+			var next_win = Alloy.createController('create_note').getView();
+			next_win.open();
+			next_win = null;
+			$.index.close();
+});
+
+overallView.add(topView);
+
+
+btn.addEventListener('click', function() {
+    drawer.toggleLeft();
+});
+
+//SCROOLVIEW
+var scroolView = Ti.UI.createTableView({
+	  top:"15%",
+	  height: '85%',
+	  width: '100%',
+	  backgroundColor: '#cccccc',
+	  	separatorStyle:Ti.UI.TABLE_VIEW_SEPARATOR_STYLE_NONE,
 	
-		var view = Ti.UI.createView({
-			id: ids,
-			type: tipo,
-			borderRadius: 12,
-			elevation: 10,
-			layout: 'vertical',
-			backgroundColor: colors,
-			width: "90%",
-			height: 180,
-			top: "2%",
-		});
-		
-		var label1 = Ti.UI.createLabel({
-			id : ids,
-			left:"10%",
-			color: "black",
-			font: {
-				fontSize: 34,
-				fontFamily: 'Helvetica Neue'
-			},
-			top: '2%',
-			text: title
-		});	
-		
-		var label2 = Ti.UI.createLabel({
-			id : ids,
-			left:"4%",
-			color: "black",
-			font: {
-				fontSize: 16,
-				fontFamily: 'Helvetica Neue'
-			},
-			top: '2%',
-			text: desc
-		});	
-		
-		view.add(label1);
-		view.add(label2);
-		
-		$.scrollView.add(view);
-		result.next();
-}
+	});
 
 
-$.scrollView.addEventListener("click", function(e){
-	
+overallView.add(scroolView);
+
+
+scroolView.addEventListener("click", function(e){
 	
 	console.log(e.source.apiName);
 	if( e.source.apiName = "Ti.UI.View"){
@@ -82,15 +95,106 @@ $.scrollView.addEventListener("click", function(e){
 	}
 	
 });
+
+var drawer = Ti.UI.Android.createDrawerLayout({
+    leftView: leftView,
+    centerView: overallView,
+});
+
+
+
+$.index.addEventListener('open', function(){
+	var query = "SELECT note.*,category.color FROM note,category WHERE note.category_id = category.id";
+	populate(query);
+    var activity = $.index.getActivity(),
+        actionBar = activity.getActionBar();
+
+    if (actionBar) {
+        actionBar.displayHomeAsUp = true;
+        actionBar.onHomeIconItemSelected = function() {
+            drawer.toggleRight();
+        };
+    }
+});
+
+$.index.add(drawer);
+
+//-----------------
+function populate(query){
+	
+	var data = [];
+	
+	var result = database.database_call(query);
+	
+	while(result.isValidRow()){
+			var ids = result.fieldByName('id');
+			var title = result.fieldByName('title');
+			var desc = result.fieldByName('description');
+			var cat = result.fieldByName('category_id');
+			var colors = result.fieldByName('color');
+			console.log("Title: " + title + " Description: " + desc + " Category_id: " + cat + " Color: " + colors);
+			
+			var view = Ti.UI.createView({
+				id: ids,
+				type: cat,
+				borderRadius: 12,
+				elevation: 10,
+				layout: 'vertical',
+				backgroundColor: colors,
+				width: "90%",
+				height: 180,
+				top:"1%",
+				bottom: "2%"
+			});
+			
+			var label1 = Ti.UI.createLabel({
+				id : ids,
+				left:"10%",
+				color: "black",
+				font: {
+					fontSize: 34,
+					fontFamily: 'Helvetica Neue'
+				},
+				top: '2%',
+				text: title
+			});	
+			
+			var label2 = Ti.UI.createLabel({
+				id : ids,
+				left:"4%",
+				color: "black",
+				font: {
+					fontSize: 16,
+					fontFamily: 'Helvetica Neue'
+				},
+				top: '2%',
+				text: desc
+			});	
+			
+			view.add(label1);
+			view.add(label2);
+			
+			var row = Ti.UI.createTableViewRow({
+					width : "100%",
+					height : Ti.UI.SIZE,
+				});
+			row.add(view);	
+			data.push(row);	
+			result.next();
+			row = null;
+	}
+	var row = Ti.UI.createTableViewRow({
+					width : "100%",
+					height : 20,
+				});	
+	data.push(row);
+	
+	scroolView.setData(data);
+	data = null;
+}
 		
 $.index.open();
 
 // CANT GO BACK
 $.index.addEventListener("android:back", function(){ });
 
-$.add_button.addEventListener("click", function(){
-			var next_win = Alloy.createController('create_note').getView();
-			next_win.open();
-			next_win = null;
-			$.index.close();
-});
