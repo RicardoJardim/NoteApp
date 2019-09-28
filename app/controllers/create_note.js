@@ -15,25 +15,41 @@ function goBack(){
 
 
 function inicializa(){
-	var colArray = JSON.parse(Ti.App.Properties.getString('type'));
+	
 	var picks = [];
 
-		for( var chave in colArray["types"]){
-			
-			picks.push(Ti.UI.createPickerRow({title:colArray["types"][chave].type , id:colArray["types"][chave].id}));
+	var query = "SELECT * FROM category";
+
+	var result = database.database_call(query);
+	
+	while(result.isValidRow()){
+		
+			var ids = result.fieldByName('id');
+			var titles = result.fieldByName('title');
+			var colors = result.fieldByName('color');
+			console.log(ids,titles,colors)	;
+			picks.push(Ti.UI.createPickerRow({title:titles , id:ids, color: colors}));
+			result.next();
 		}	
 
 	$.picker.add(picks);	
 }
 
 $.picker.selectionIndicator = true;
-inicializa();
+
+
+$.create_note.addEventListener('open', function(){
+	
+	inicializa();
+});
 
 // mudar o estado interno
 var idPicker = 1;
 $.picker.addEventListener("change", function(e){
 	Ti.API.info(e.row.title);
 	idPicker = e.row.id;
+	$.view_create.backgroundColor = e.row.color;
+	$.picker_view.backgroundColor = e.row.color;
 });
 
 function saveNote(e){
@@ -54,7 +70,7 @@ function saveNote(e){
 	
 	 if(titulo && idPicker){
 	 		var data = [];
-	 		var query = 'INSERT INTO note (title,description,type) VALUES (?,?,?)';
+	 		var query = 'INSERT INTO note (title,description,category_id) VALUES (?,?,?)';
 	 		data.push(titulo,descricao,idPicker);
 	 		var nada = database.database_call_algorithm(query,data);
 	 		nada = null;
@@ -73,3 +89,4 @@ function saveNote(e){
 	 
 	
 }
+

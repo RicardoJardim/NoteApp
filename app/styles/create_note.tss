@@ -1,13 +1,12 @@
 "#create_note":{
-	layout:'vertical',
+	layout:'composite',
 }
 
 "#view_create":{
-	backgroundColor:"#0099ff",
+	backgroundColor:"#ffffff",
 	layout: "vertical",
-	top:"2%",
 	width: '90%',
-	height: '96%',
+	height: Ti.UI.SIZE,
 	borderRadius: 10,
 	elevation: 10,
 }
@@ -24,14 +23,15 @@
 
 "#save":{
 	top: "2%",
+	width: "90%",
 	backgroundColor: "#2eb82e",
 }
 
 "#picker_view":{
 	top: "2%",
-	backgroundColor: "#0099ff",
+	backgroundColor: "#ffffff",
 	layout: "composite",
-	height: "15%"
+	height: "7%"
 }
 
 "#descrip":{
@@ -39,10 +39,10 @@
 }
 
 "#picker": {
-	backgroundColor: "#000080",
+	backgroundColor: "#000000",
 	color:"#fff",
 	borderRadius: "5",
-	width: 140,
+	width: Titanium.UI.SIZE,
 	heigth: 100,
 	font: {
 		fontSize: 18,

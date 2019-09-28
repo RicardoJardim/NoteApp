@@ -8,23 +8,23 @@ database.install();
 var leftView = Ti.UI.createView({ backgroundColor:'red' });
 
 //CENTER VIEW WITH TOP BOTTON AND SCROLLVIEW
-var overallView = Ti.UI.createView({ });
+var overallView = Ti.UI.createView({ layout:"vertical" });
 
 
 var topView = Ti.UI.createView({
 	top:1,
 	height: 105,
 	elevation :10,
-	backgroundColor:"#cccccc",
+	backgroundColor:"#e6e6e6",
 });
 
 
 //TOP BOTTON
-var btn = Ti.UI.createButton({ backgroundImage: "/settings.png", top:"3%" , left:"5%", width:"12%", height:"35%"});
+var btn = Ti.UI.createButton({ backgroundImage: "/settings.png", top:"6%" , left:"5%", width:"12%", height:"35%"});
 topView.add(btn);
 
 //Search bar
-var search = Titanium.UI.createSearchBar({ color:"black",focusable:true,width:"98%",borderColor:"black",barColor:'#ffffff', showCancel:true, height:50, bottom:1,hintText:"Search by note", hintTextColor:"#cccccc" });
+var search = Titanium.UI.createSearchBar({ color:"black",focusable:true,width:"98%",barColor:'#ffffff', showCancel:true, height:50, bottom:1,hintText:"Search by note", hintTextColor:"#cccccc" });
 topView.add(search);
 
 
@@ -47,16 +47,17 @@ search.addEventListener("change", function(e) {
 });
 
 //TOP BOTTON
-var btn2 = Ti.UI.createButton({ backgroundImage: "/add.png" , top:"3%" , right:"4%", width:"12%", height:"35%"});
+var btn2 = Ti.UI.createButton({ backgroundImage: "/add.png" , top:"6%" , right:"4%", width:"11%", height:"35%"});
 topView.add(btn2);
 //TOP BOTTON
-var addText = Ti.UI.createLabel({ text:"Add Note" , top:"3%" ,color:"black", right:"18%",font: {fontSize: 26,fontFamily: 'Helvetica Neue'},	});
+var addText = Ti.UI.createLabel({ text:"Add Note" , top:"6%" ,color:"black", right:"18%",font: {fontSize: 26,fontFamily: 'Helvetica Neue'},	});
 topView.add(addText);
 
 btn2.addEventListener("click", function(){
 			var next_win = Alloy.createController('create_note').getView();
 			next_win.open();
 			next_win = null;
+			$.index.remove(drawer);
 			$.index.close();
 });
 
@@ -69,10 +70,9 @@ btn.addEventListener('click', function() {
 
 //SCROOLVIEW
 var scroolView = Ti.UI.createTableView({
-	  top:"15%",
-	  height: '85%',
+	  height: Ti.UI.FILL,
 	  width: '100%',
-	  backgroundColor: '#cccccc',
+	  backgroundColor: '#e6e6e6',
 	  	separatorStyle:Ti.UI.TABLE_VIEW_SEPARATOR_STYLE_NONE,
 	
 	});
@@ -81,13 +81,12 @@ var scroolView = Ti.UI.createTableView({
 overallView.add(scroolView);
 
 
-scroolView.addEventListener("click", function(e){
+overallView.addEventListener("click", function(e){
 	
 	console.log(e.source.apiName);
-	if( e.source.apiName = "Ti.UI.View"){
+	if( e.source.apiName = "Ti.UI.View" && e.source.id != undefined){
 		console.log(e.source.id);
-		console.log(e.source.type);
-		var args =[e.source.id,e.source.type];
+		var args =[e.source.id];
 		var next_win = Alloy.createController('sub_notes',args).getView();
 		next_win.open();
 		next_win = null;
@@ -104,8 +103,11 @@ var drawer = Ti.UI.Android.createDrawerLayout({
 
 
 $.index.addEventListener('open', function(){
+	
+
 	var query = "SELECT note.*,category.color FROM note,category WHERE note.category_id = category.id";
 	populate(query);
+	
     var activity = $.index.getActivity(),
         actionBar = activity.getActionBar();
 
@@ -115,6 +117,7 @@ $.index.addEventListener('open', function(){
             drawer.toggleRight();
         };
     }
+    
 });
 
 $.index.add(drawer);
@@ -134,18 +137,36 @@ function populate(query){
 			var colors = result.fieldByName('color');
 			console.log("Title: " + title + " Description: " + desc + " Category_id: " + cat + " Color: " + colors);
 			
-			var view = Ti.UI.createView({
-				id: ids,
-				type: cat,
-				borderRadius: 12,
-				elevation: 10,
-				layout: 'vertical',
-				backgroundColor: colors,
-				width: "90%",
-				height: 180,
-				top:"1%",
-				bottom: "2%"
-			});
+			if(desc != null &&  desc != ""){
+				
+				var view = Ti.UI.createView({
+					id: ids,
+					borderRadius: 12,
+					elevation: 10,
+					layout: 'vertical',
+					backgroundColor: colors,
+					width: "90%",
+					height: 150,
+					top:"2%",
+					bottom:"1%",
+				});
+				
+			}
+			else{
+				
+				var view = Ti.UI.createView({
+					id: ids,
+					type: cat,
+					borderRadius: 12,
+					elevation: 10,
+					layout: 'vertical',
+					backgroundColor: colors,
+					width: "90%",
+					height: 100,
+					top:"2%",
+					bottom:"1%",
+				});
+			}
 			
 			var label1 = Ti.UI.createLabel({
 				id : ids,

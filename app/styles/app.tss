@@ -22,48 +22,17 @@ overrode the settings with other TSS, XML, or JS settings:
 */
 
 'Window': {
-	backgroundColor: '#cccccc', // white background instead of default transparent or black
+	backgroundColor: '#e6e6e6', // white background instead of default transparent or black
 	orientationModes: [
 		Ti.UI.PORTRAIT
 	]
 }
 
 
-".addview":{
-	top:"2%",
-	backgroundColor:"#2eb82e",
-	layout: 'composite',
-	width: '95%',
-	height: '10%',
-	color:"black",
-	borderRadius: "5",
-	font: {
-	fontSize: 18,
-	fontWeight: "bold",
-	},
-}
-
-".addnote":{
-	right:"50%",
-	color: "black",
-	font: {
-		fontWeight: "semibold",
-		fontSize: 32,
-		fontFamily: 'Helvetica Neue'
-	},
-}
-
-".addbutton":{
-	left:"60%",
-	title: "ADD",
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE
-}
-
-
 ".errase":{
 	backgroundColor: "red",
 	width: "60%",
+	height:Ti.UI.SIZE,
 	top:"1%",
 	color:"#ffffff",
 	borderRadius: "5",
@@ -74,7 +43,7 @@ overrode the settings with other TSS, XML, or JS settings:
 }
 
 'TextField':{
-	backgroundColor: "#cccccc",
+	backgroundColor: "#e6e6e6",
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_BEZEL,
 	borderColor:"black",
     keyboardToolbarHeight: 20,
@@ -101,7 +70,7 @@ overrode the settings with other TSS, XML, or JS settings:
 }
 
 ".AreaText":{
-	backgroundColor: "#cccccc",
+	backgroundColor: "#e6e6e6",
 	borderRadius: 14,
 	width: "90%",
 	height: '60%',
@@ -114,5 +83,11 @@ overrode the settings with other TSS, XML, or JS settings:
 		
 	}
 
+}
+
+".newView":{
+	top:"1%",
+	width:"100%",
+	height:20
 }
 

@@ -1,12 +1,11 @@
 "#view_subnotes":{
-	layout: "vertical",
+	layout: "composite",
 }
 
 "#viewsub":{
 	layout: "vertical",
-	top:"2%",
 	width: '90%',
-	height: '96%',
+	height: Ti.UI.SIZE,
 	borderRadius: 10,
 	elevation: 10,
 }
@@ -24,8 +23,8 @@
 	borderRadius: 10,
 	top:"1%",
 	width: '96%',
-	height: '80%',
-	backgroundColor: "white",
+	height: '70%',
+	backgroundColor: "#e6e6e6",
 	borderColor: "black",
 	layout: "vertical"
 }
@@ -42,6 +41,11 @@
 	},
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
 	includeFontPadding : true
+}
+
+"#erase":{
+	top:"2%",
+	width: "90%",
 }
 
 

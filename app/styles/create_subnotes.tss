@@ -1,12 +1,11 @@
 "#create_note":{
-	layout:'vertical',
+	layout:'composite',
 }
 
 "#view_create":{
 	layout: "vertical",
-	top:"2%",
 	width: '90%',
-	height: '96%',
+	height: Titanium.UI.SIZE,
 	borderRadius: 10,
 	elevation: 10,
 }
@@ -23,5 +22,8 @@
 
 "#save":{
 	top:"2%",
+	width: "90%",
 	backgroundColor: "#2eb82e",
 }
+
+

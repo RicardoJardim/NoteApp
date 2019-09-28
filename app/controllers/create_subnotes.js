@@ -2,25 +2,15 @@ var args = $.args;
 console.log(args);
 
 var alerted = require('alert');
-var database = require("database_js");
 
-var colArray = JSON.parse(Ti.App.Properties.getString('type'));
-for( var chave in colArray["types"]){
-	if(args[1] == colArray["types"][chave].id){
-		var colors = colArray["types"][chave].color;
-		console.log(colors);
-	}
-}	
-
-
-$.view_create.backgroundColor = colors;
+$.view_create.backgroundColor = args[1];
 
 $.create_subnotes.addEventListener("android:back", function(){
 		goBack();
 	 });
 	 
 function goBack(){
-	var send = [args[0],args[1]];
+	var send = [args[0]];
 	var next_win = Alloy.createController('sub_notes',send).getView();
 	next_win.open();
 	next_win = null;
@@ -28,6 +18,8 @@ function goBack(){
 }	 
 
 function saveNote(e){
+	var database = require("database_js");
+	
 	var titulo = $.title.value;
 	var conteudo = $.cont.value;
 	var finalText = "";

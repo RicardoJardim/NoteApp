@@ -15,6 +15,7 @@
 			<Button id="save" onClick="saveNote" class="errase">
 				SAVE
 			</Button>
+			<View class="newView"> </View>
 		</View>
 	</Window>
 </Alloy>
