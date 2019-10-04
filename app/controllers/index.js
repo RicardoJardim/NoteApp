@@ -13,11 +13,39 @@ var TableView = Ti.UI.createTableView({
 	  height: Ti.UI.FILL,
 	  width: Ti.UI.FILL,
 	  backgroundColor: '#e6e6e6',
-	  	separatorStyle:Ti.UI.TABLE_VIEW_SEPARATOR_STYLE_NONE,
+	  	separatorColor : '#e6e6e6',
 	
 	});
 			
 leftView.add(TableView);
+
+TableView.addEventListener("click", function(e) {
+
+	console.log(e.row.id);
+	if(e.row.id != undefined){			
+		if (e.row.id == 0) {
+			var query = "SELECT note.*,category.color FROM note,category WHERE note.category_id = category.id";
+			populate(query);
+			drawer.closeLeft( );
+		} else {
+			scroolView.setData([]);
+			var query = 'SELECT note.*,category.color FROM note,category WHERE note.category_id=category.id AND category.id ='+e.row.id+'';
+			
+			if (database.database_check(query)) {			
+				populate(query);
+				drawer.closeLeft( );
+			}
+		}
+	}
+	else{
+		if(e.row.name == 1){
+			console.log("E ROW 1 "+e.row);
+		}
+		else if(e.row.name == 2){
+			console.log("E ROW 2 "+e.row);
+		}
+	}
+});
 
 //CENTER VIEW WITH TOP BOTTON AND SCROLLVIEW
 var overallView = Ti.UI.createView({ layout:"vertical" });
@@ -236,6 +264,7 @@ function populateTable(query){
 	var TotalNumber = result3.field(0);
 	
 	var row = Ti.UI.createTableViewRow({
+				id:0,
 				backgroundColor:"white",
 				width : Ti.UI.FILL,
 				height : Ti.UI.SIZE,
@@ -276,7 +305,8 @@ function populateTable(query){
 		var number = result2.field(0);
 				
 			var row = Ti.UI.createTableViewRow({
-				backgroundColor:"white",
+				id:ids,
+				backgroundColor: colors,
 				width : Ti.UI.FILL,
 				height : Ti.UI.SIZE,
 			});	
@@ -288,7 +318,7 @@ function populateTable(query){
 				fontSize: 24,
 				fontFamily: 'Helvetica Neue'
 			},
-			text: "All notes"
+			text: titles
 		});	
 		
 		var label2 = Ti.UI.createLabel({
@@ -298,7 +328,7 @@ function populateTable(query){
 				fontSize: 24,
 				fontFamily: 'Helvetica Neue'
 			},
-			text: TotalNumber
+			text: number
 		});	
 			row.add(label1);
 			row.add(label2);
@@ -317,6 +347,7 @@ function populateTable(query){
 	data.push(row);
 	
 	var row = Ti.UI.createTableViewRow({
+					name:1,
 					width : "100%",
 					backgroundColor:"white",
 					title:"Add category",
@@ -325,7 +356,7 @@ function populateTable(query){
 					borderRadius:5,
 					color:"black",
 					font: {
-						fontSize: 26,
+						fontSize: 24,
 						fontFamily: 'Helvetica Neue',
 						
 					}
@@ -333,6 +364,7 @@ function populateTable(query){
 	data.push(row);
 	
 	var row = Ti.UI.createTableViewRow({
+				name:2,
 				width : "100%",
 				backgroundColor:"white",
 				title:"Edit category",
@@ -341,7 +373,7 @@ function populateTable(query){
 				borderRadius:5,
 				color:"black",
 				font: {
-					fontSize: 26,
+					fontSize: 24,
 					fontFamily: 'Helvetica Neue',
 					
 				}
