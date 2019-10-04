@@ -5,7 +5,19 @@ database.install();
 
 //-------------------------
 //LEFT VIEW
-var leftView = Ti.UI.createView({ backgroundColor:'red' });
+var leftView = Ti.UI.createView({ backgroundColor:"#e6e6e6" });
+
+//SIDE TABLEVIEW
+var TableView = Ti.UI.createTableView({
+	  top:"10%",
+	  height: Ti.UI.FILL,
+	  width: Ti.UI.FILL,
+	  backgroundColor: '#e6e6e6',
+	  	separatorStyle:Ti.UI.TABLE_VIEW_SEPARATOR_STYLE_NONE,
+	
+	});
+			
+leftView.add(TableView);
 
 //CENTER VIEW WITH TOP BOTTON AND SCROLLVIEW
 var overallView = Ti.UI.createView({ layout:"vertical" });
@@ -107,6 +119,9 @@ $.index.addEventListener('open', function(){
 
 	var query = "SELECT note.*,category.color FROM note,category WHERE note.category_id = category.id";
 	populate(query);
+	
+	var query2 = "SELECT * FROM category";
+	populateTable(query2);
 	
     var activity = $.index.getActivity(),
         actionBar = activity.getActionBar();
@@ -211,6 +226,129 @@ function populate(query){
 	data.push(row);
 	
 	scroolView.setData(data);
+	data = null;
+}
+//-----------------
+function populateTable(query){
+		
+	var data = [];
+	var result3 = database.database_call('SELECT COUNT(*) FROM note ');
+	var TotalNumber = result3.field(0);
+	
+	var row = Ti.UI.createTableViewRow({
+				backgroundColor:"white",
+				width : Ti.UI.FILL,
+				height : Ti.UI.SIZE,
+			});	
+			
+		var label1 = Ti.UI.createLabel({
+			left:"10%",
+			color: "black",
+			font: {
+				fontSize: 24,
+				fontFamily: 'Helvetica Neue'
+			},
+			text: "All notes"
+		});	
+		
+		var label2 = Ti.UI.createLabel({
+			right:"10%",
+			color: "black",
+			font: {
+				fontSize: 24,
+				fontFamily: 'Helvetica Neue'
+			},
+			text: TotalNumber
+		});	
+	
+	row.add(label1);
+	row.add(label2);
+	data.push(row);
+	
+	var result = database.database_call(query);
+	
+	while(result.isValidRow()){
+			var ids = result.fieldByName('id');
+			var titles = result.fieldByName('title');
+			var colors = result.fieldByName('color');
+			
+		var result2 = database.database_call('SELECT COUNT(*) FROM note WHERE category_id='+ids+'');
+		var number = result2.field(0);
+				
+			var row = Ti.UI.createTableViewRow({
+				backgroundColor:"white",
+				width : Ti.UI.FILL,
+				height : Ti.UI.SIZE,
+			});	
+			
+		var label1 = Ti.UI.createLabel({
+			left:"10%",
+			color: "black",
+			font: {
+				fontSize: 24,
+				fontFamily: 'Helvetica Neue'
+			},
+			text: "All notes"
+		});	
+		
+		var label2 = Ti.UI.createLabel({
+			right:"10%",
+			color: "black",
+			font: {
+				fontSize: 24,
+				fontFamily: 'Helvetica Neue'
+			},
+			text: TotalNumber
+		});	
+			row.add(label1);
+			row.add(label2);
+						
+			data.push(row);	
+			result.next();
+			row = null;
+	}
+	var row = Ti.UI.createTableViewRow({
+			top:"2%",
+			width : "100%",
+			backgroundColor: "#cccccc",
+			height : 40,
+			selectedBackgroundColor :"#cccccc"
+				});	
+	data.push(row);
+	
+	var row = Ti.UI.createTableViewRow({
+					width : "100%",
+					backgroundColor:"white",
+					title:"Add category",
+					width : "100%",
+					height : Ti.UI.SIZE,
+					borderRadius:5,
+					color:"black",
+					font: {
+						fontSize: 26,
+						fontFamily: 'Helvetica Neue',
+						
+					}
+				});	
+	data.push(row);
+	
+	var row = Ti.UI.createTableViewRow({
+				width : "100%",
+				backgroundColor:"white",
+				title:"Edit category",
+				width : "100%",
+				height : Ti.UI.SIZE,
+				borderRadius:5,
+				color:"black",
+				font: {
+					fontSize: 26,
+					fontFamily: 'Helvetica Neue',
+					
+				}
+			});	
+	data.push(row);
+	
+	TableView.setData(data);
 	data = null;
 }
 		
