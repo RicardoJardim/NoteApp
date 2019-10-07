@@ -1,0 +1,19 @@
+<Alloy>
+	<Window id="create_category">
+		<View id="viewcat">
+			<Label id="create">New Category</Label>
+			 
+			<Label class="tinylabel">Name</Label> 
+			<TextField id="name"/>
+			
+			<Label class="tinylabel" top="3%">Color</Label> 
+			<View id="viewColors">				
+				
+			</View>
+		<Button id="save" onClick="saveCat" class="errase">
+				SAVE
+			</Button>
+		<View class="newView"> </View>
+		</View>
+	</Window>
+</Alloy>

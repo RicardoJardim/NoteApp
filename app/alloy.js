@@ -12,4 +12,6 @@
 
 
 
+var ArrayColors = [ "#ffffff", "#ffff00", "#cc6600", "#002db3", "#ff0000", "#4da6ff ", "#ff66cc","#39e600", "#a3a375","#9900cc"];
 
+Ti.App.Properties.setList('ArrayColors',ArrayColors);

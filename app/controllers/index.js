@@ -40,6 +40,13 @@ TableView.addEventListener("click", function(e) {
 	else{
 		if(e.row.name == 1){
 			console.log("E ROW 1 "+e.row);
+			console.log(Ti.App.Properties.getList('ArrayColors'));
+			
+			var next_win = Alloy.createController('create_category').getView();
+			next_win.open();
+			next_win = null;
+			$.index.remove(drawer);
+			$.index.close();
 		}
 		else if(e.row.name == 2){
 			console.log("E ROW 2 "+e.row);
@@ -267,11 +274,11 @@ function populateTable(query){
 				id:0,
 				backgroundColor:"white",
 				width : Ti.UI.FILL,
-				height : Ti.UI.SIZE,
+				height : 40,
 			});	
 			
 		var label1 = Ti.UI.createLabel({
-			left:"10%",
+			left:"5%",
 			color: "black",
 			font: {
 				fontSize: 24,
@@ -308,11 +315,11 @@ function populateTable(query){
 				id:ids,
 				backgroundColor: colors,
 				width : Ti.UI.FILL,
-				height : Ti.UI.SIZE,
+				height : 40 ,
 			});	
 			
 		var label1 = Ti.UI.createLabel({
-			left:"10%",
+			left:"5%",
 			color: "black",
 			font: {
 				fontSize: 24,
@@ -356,7 +363,7 @@ function populateTable(query){
 					borderRadius:5,
 					color:"black",
 					font: {
-						fontSize: 24,
+						fontSize: 20,
 						fontFamily: 'Helvetica Neue',
 						
 					}
@@ -373,7 +380,7 @@ function populateTable(query){
 				borderRadius:5,
 				color:"black",
 				font: {
-					fontSize: 24,
+					fontSize: 20,
 					fontFamily: 'Helvetica Neue',
 					
 				}

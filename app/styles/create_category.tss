@@ -1,0 +1,40 @@
+"#create_category":{
+	layout: "composite",
+}
+
+"#viewcat":{
+	layout: "vertical",
+	backgroundColor:"#ffffff",
+	width: '90%',
+	height: Ti.UI.SIZE,
+	borderRadius: 10,
+	elevation: 10,
+}
+
+"#create":{
+	color: "black",
+	font: {
+		fontWeight: "semibold",
+		fontSize: 30,
+		fontFamily: 'Helvetica Neue'
+	},
+}
+
+"#viewColors":{
+	borderRadius: 10,
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_BEZEL,
+    borderWidth : 2,
+	top:"1%",
+	width: '95%',
+	height: '40%',
+	backgroundColor: "#e6e6e6",
+	borderColor: "black",
+	layout: "horizontal"
+}
+
+"#save":{
+	top:"4%",
+	width: "90%",
+	backgroundColor: "#2eb82e",
+}
+
