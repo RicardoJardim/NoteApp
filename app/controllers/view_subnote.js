@@ -7,7 +7,7 @@ var query = 'SELECT * FROM subnote WHERE id ='+ args[0]+'';
 var result2 = database.database_call(query);
 
 var title = result2.fieldByName('title');
-var content = result2.fieldByName('title');
+var content = result2.fieldByName('content');
 
 
 $.view_subnotes.addEventListener("android:back", function(){

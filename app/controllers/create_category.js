@@ -78,6 +78,9 @@ $.create_category.addEventListener('open', function(){
 });
 
 function delCat(e){
+	var query1 = 'UPDATE note SET category_id=1 WHERE category_id='+args[0]+'';		
+	var nada1 = database.database_call(query1);
+
 	var query = 'DELETE FROM category WHERE id='+args[0]+' ';	
 	var nada = database.database_call(query);
 	$.name.value = "";

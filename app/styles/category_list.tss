@@ -9,6 +9,7 @@
 }
 
 "#table_view":{
+	top:"2%",
 	height: Ti.UI.FILL,
 	width: Ti.UI.FILL,
 	backgroundColor: '#e6e6e6',

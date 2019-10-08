@@ -38,6 +38,7 @@ function inicializa(){
 					backgroundColor: colors,
 					width: "90%",
 					height: 55,
+					bottom:"2%"
 				});
 			
 			var label1 = Ti.UI.createLabel({
