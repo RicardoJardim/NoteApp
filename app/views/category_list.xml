@@ -1,0 +1,11 @@
+<Alloy>
+	<Window id="category_list">
+		<View id="topView">
+			<Label id="label"></Label>
+			<Button id="button" onClick="confirm">
+				
+			</Button>
+		</View>
+		<TableView id="table_view"></TableView>
+	</Window>
+</Alloy>

@@ -13,6 +13,9 @@
 		<Button id="save" onClick="saveCat" class="errase">
 				SAVE
 			</Button>
+		<Button id="deletes" onClick="delCat" class="errase">
+				Delete
+			</Button>
 		<View class="newView"> </View>
 		</View>
 	</Window>

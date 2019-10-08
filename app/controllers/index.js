@@ -19,6 +19,8 @@ var TableView = Ti.UI.createTableView({
 			
 leftView.add(TableView);
 
+var searchFor = 0;
+
 TableView.addEventListener("click", function(e) {
 
 	console.log(e.row.id);
@@ -27,6 +29,7 @@ TableView.addEventListener("click", function(e) {
 			var query = "SELECT note.*,category.color FROM note,category WHERE note.category_id = category.id";
 			populate(query);
 			drawer.closeLeft( );
+			searchFor = 0;
 		} else {
 			scroolView.setData([]);
 			var query = 'SELECT note.*,category.color FROM note,category WHERE note.category_id=category.id AND category.id ='+e.row.id+'';
@@ -34,14 +37,12 @@ TableView.addEventListener("click", function(e) {
 			if (database.database_check(query)) {			
 				populate(query);
 				drawer.closeLeft( );
+				searchFor = e.row.id;
 			}
 		}
 	}
 	else{
 		if(e.row.name == 1){
-			console.log("E ROW 1 "+e.row);
-			console.log(Ti.App.Properties.getList('ArrayColors'));
-			
 			var next_win = Alloy.createController('create_category').getView();
 			next_win.open();
 			next_win = null;
@@ -49,7 +50,11 @@ TableView.addEventListener("click", function(e) {
 			$.index.close();
 		}
 		else if(e.row.name == 2){
-			console.log("E ROW 2 "+e.row);
+			var next_win = Alloy.createController('category_list').getView();
+			next_win.open();
+			next_win = null;
+			$.index.remove(drawer);
+			$.index.close();
 		}
 	}
 });
@@ -78,17 +83,34 @@ topView.add(search);
 search.addEventListener("change", function(e) {
 
 	console.log(search.value);
-
-	if (search.value == "") {
-		var query = "SELECT note.*,category.color FROM note,category WHERE note.category_id = category.id";
-		populate(query);
-	} else {
-		scroolView.setData([]);
-		var query = 'SELECT note.*,category.color FROM note,category WHERE note.category_id = category.id AND note.title LIKE "%' + search.value + '%" ';
+	
+	if(searchFor == 0){
 		
-		if (database.database_check(query)) {			
+		if (search.value == "") {
+			var query = "SELECT note.*,category.color FROM note,category WHERE note.category_id = category.id";
 			populate(query);
+		} else {
+			scroolView.setData([]);
+			var query = 'SELECT note.*,category.color FROM note,category WHERE note.category_id = category.id AND note.title LIKE "%' + search.value + '%" ';
+			
+			if (database.database_check(query)) {			
+				populate(query);
+			}
 		}
+	}
+	else{
+		if (search.value == "") {
+			var query = 'SELECT note.*,category.color FROM note,category WHERE note.category_id = category.id AND category.id = '+searchFor+'';
+			populate(query);
+		} else {
+			scroolView.setData([]);
+			var query = 'SELECT note.*,category.color FROM note,category WHERE note.category_id = category.id AND category.id = '+searchFor+' AND note.title LIKE "%' + search.value + '%" ';
+			
+			if (database.database_check(query)) {			
+				populate(query);
+			}
+		}
+		
 	}
 		
 });

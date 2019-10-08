@@ -1,5 +1,6 @@
 "#create_category":{
 	layout: "composite",
+
 }
 
 "#viewcat":{
@@ -36,5 +37,11 @@
 	top:"4%",
 	width: "90%",
 	backgroundColor: "#2eb82e",
+}
+
+
+"#deletes":{
+	top:"4%",
+	width: "90%",
 }
 

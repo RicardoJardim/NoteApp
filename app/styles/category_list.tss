@@ -1,0 +1,29 @@
+"#category_list":{
+	layout: "vertical",
+}
+
+"#topView": {
+	height:"10%",
+	elevation :10,
+	backgroundColor:"#e6e6e6",
+}
+
+"#table_view":{
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+	backgroundColor: '#e6e6e6',
+	separatorColor : '#e6e6e6',
+}
+
+"#button":{
+	 backgroundImage: "/check.png",  
+	 right:"5%", 
+	 width:"14%", 
+}
+
+"#label":{
+	text:"Category List" ,
+	color:"black", 
+	left:"5%",
+	font: {fontSize: 26,fontFamily: 'Helvetica Neue'},	
+}
