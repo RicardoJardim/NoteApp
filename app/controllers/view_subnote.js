@@ -2,7 +2,7 @@
 var args = $.args;
 var alerted = require('alert');
 var database = require("database_js");
-
+// QUERY FOR SELECTED SUBNOTE
 var query = 'SELECT * FROM subnote WHERE id ='+ args[0]+'';
 var result2 = database.database_call(query);
 
@@ -17,11 +17,12 @@ $.view_subnotes.addEventListener("android:back", function(){
 	next_win = null;
 	$.view_subnotes.close();
 	 });
-	 
+
 $.name.text = title;
 $.viewsub.backgroundColor = args[2];
 $.textArea.text = content;
 
+//EVENT LISTNER FOR DELETING SUBNOTE
 function erase(e){
 	console.log(args[0]);
 	var query = 'DELETE FROM subnote WHERE id = '+ args[0]+'';
@@ -33,4 +34,3 @@ function erase(e){
 	next_win = null;
 	$.view_subnotes.close();
 }
-
