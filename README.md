@@ -4,15 +4,15 @@ Esta aplicação consiste num exemplo de uma aplicação de criação e modifica
 
 # Funcionalidades
 - Criar, editar e eliminar notas 
-⋅⋅* Titulo
-⋅⋅* Descrição
-⋅⋅* Categoria
+⋅⋅⋅ - Titulo
+⋅⋅⋅ - Descrição
+⋅⋅⋅ - Categoria
 - Criar, editar e eliminar sub notas
-⋅⋅* Titulo
-⋅⋅* Descrição
+⋅⋅⋅ - Titulo
+⋅⋅⋅ - Descrição
 - Criar, editar e eliminar categorias
-⋅⋅* Nome
-⋅⋅* Cor
+⋅⋅⋅ - Nome
+⋅⋅⋅ - Cor
 - Visualizar notas
-⋅⋅* Todas
-⋅⋅* Por categoria
+⋅⋅⋅ - Todas
+⋅⋅⋅ - Por categoria
