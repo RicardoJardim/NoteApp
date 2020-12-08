@@ -16,7 +16,7 @@
   <property name="ti.ui.defaultunit" type="string">dp</property>
   <property name="run-on-main-thread" type="bool">true</property>
   <ios>
-    <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
+    <enable-launch-screen-storyboard>false</enable-launch-screen-storyboard>
     <use-app-thinning>true</use-app-thinning>
     <plist>
       <dict>
@@ -52,12 +52,12 @@
   </android>
   <modules/>
   <deployment-targets>
-    <target device="iphone">false</target>
+    <target device="iphone">true</target>
     <target device="ipad">false</target>
     <target device="android">true</target>
     <target device="windows">false</target>
   </deployment-targets>
-  <sdk-version>8.0.2.GA</sdk-version>
+  <sdk-version>9.0.2.GA</sdk-version>
   <plugins>
     <plugin version="1.0">ti.alloy</plugin>
   </plugins>

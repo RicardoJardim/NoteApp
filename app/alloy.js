@@ -11,7 +11,6 @@
 // Alloy.Globals.someGlobalFunction = function(){};
 
 
+Ti.App.Properties.setList('ArrayColors',[ "#ffffff", "#ffff00", "#cc6600", "#002db3", "#b30000", "#4da6ff ", "#ff66cc", "#a3a375","#9900cc"]);
 
-var ArrayColors = [ "#ffffff", "#ffff00", "#cc6600", "#002db3", "#b30000", "#4da6ff ", "#ff66cc", "#a3a375","#9900cc"];
-
-Ti.App.Properties.setList('ArrayColors',ArrayColors);
+Alloy.Globals.font = 'regularfont';

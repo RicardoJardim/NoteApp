@@ -2,7 +2,7 @@
 var alerted = require('alert');
 var database = require("database_js");
 
-$.category_list.addEventListener("android:back", function(){
+$.category_list.addEventListener("androidback", function(){
 		goBack();
 	 });
 
@@ -48,7 +48,7 @@ function inicializa(){
 				color: "black",
 				font: {
 					fontSize: 30,
-					fontFamily: 'Helvetica Neue'
+					fontFamily: Alloy.Globals.font
 				},
 				top: '2%',
 				text: titles
