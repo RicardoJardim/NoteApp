@@ -28,6 +28,7 @@ exports.TableView = function (ids, colors, hights, title, desc) {
     left: "3%",
     color: "black",
     width: "94%",
+    height: "60%",
     font: {
       fontSize: 17,
       fontFamily: Alloy.Globals.font,

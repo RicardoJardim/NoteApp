@@ -72,3 +72,8 @@
 	height:20
 }
 
+".back_button":{
+	image: "/arrow.png",
+	width: "10%",
+	left: "3%",
+}

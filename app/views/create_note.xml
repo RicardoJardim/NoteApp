@@ -1,5 +1,6 @@
 <Alloy>
 	<Window id="create_note">
+		<ImageView class="back_button" id="back" onClick="goBack"/>
 		<View id="view_create">
 			<Label id="create">New Note</Label> 
 				

@@ -1,9 +1,9 @@
 "#create_category":{
-	layout: "composite",
-
+	layout: "vertical",
 }
 
 "#viewcat":{
+	top:"2%",
 	layout: "vertical",
 	backgroundColor:"#ffffff",
 	width: '90%',
@@ -17,7 +17,7 @@
 	font: {
 		fontWeight: "semibold",
 		fontSize: 30,
-		fontFamily: 'Helvetica Neue'
+		fontFamily: "regularfont"	
 	},
 }
 
@@ -45,3 +45,6 @@
 	width: "90%",
 }
 
+"#back": {
+	top:"1%",	
+}

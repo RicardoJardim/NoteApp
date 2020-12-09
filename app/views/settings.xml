@@ -1,0 +1,6 @@
+<Alloy>
+	<Window id="settings">
+		<ImageView class="back_button" id="back" onClick="goBack"/>
+
+	</Window>
+</Alloy>

@@ -1,5 +1,6 @@
 <Alloy>
 	<Window id="create_category">
+		<ImageView class="back_button" id="back"/>
 		<View id="viewcat">
 			<Label id="create">New Category</Label>
 			 

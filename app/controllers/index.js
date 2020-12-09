@@ -1,6 +1,5 @@
 //MAIN PAGE OF THE APP
 
-const alerted = require("alert");
 const database = require("database_js");
 const table = require("table");
 //DATABASE INSTALL
@@ -47,15 +46,22 @@ TableView.addEventListener("click", function (e) {
       }
     }
   } else {
-    if (e.row.name == 1) {
-      changeWindow("create_category", []);
-      $.index.close();
-    } else if (e.row.name == 2) {
-      changeWindow("category_list", []);
-      $.index.close();
-    } else if (e.row.name == 3) {
-      changeWindow("category_list", []);
-      $.index.close();
+    switch (e.row.name) {
+      case 1:
+        changeWindow("create_category", []);
+        $.index.close();
+        break;
+      case 2:
+        changeWindow("category_list", []);
+        $.index.close();
+        break;
+      case 3:
+        changeWindow("settings", []);
+        $.index.close();
+        break;
+      default:
+        console.error("missing case");
+        break;
     }
   }
 });
@@ -87,20 +93,11 @@ topChildView.add(btn);
 
 var btn2 = Ti.UI.createButton({
   backgroundImage: "/add.png",
-  right: "2%",
+  right: "3%",
   height: "70%",
   width: "10%",
 });
 topChildView.add(btn2);
-
-//TOP BOTTON
-var addText = Ti.UI.createLabel({
-  text: "Add Note",
-  color: "black",
-  right: "14%",
-  font: { fontSize: 24, fontFamily: Alloy.Globals.font },
-});
-topChildView.add(addText);
 
 topView.add(topChildView);
 

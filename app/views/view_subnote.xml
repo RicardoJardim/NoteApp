@@ -1,14 +1,15 @@
 <Alloy>
 	<Window id="view_subnotes">
+		<ImageView class="back_button" id="back" onClick="goBack"/>
 		<View id="viewsub">
 			<Label id="name"/>
-			<View id="viewtext">				
+			<ScrollView id="viewtext">				
 				<Label id="textArea"/>
-			</View>
-		<Button id="erase" onClick="erase" class="errase">
-			Erase note
-		</Button>
-		<View class="newView"> </View>
+			</ScrollView>
+			<Button id="erase" onClick="erase" class="errase">
+				Erase note
+			</Button>
+			<View class="newView"> </View>
 		</View>
 	</Window>
 </Alloy>

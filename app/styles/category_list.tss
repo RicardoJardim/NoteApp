@@ -3,7 +3,7 @@
 }
 
 "#topView": {
-	height:"10%",
+	height:"8%",
 	elevation :10,
 	backgroundColor:"#e6e6e6",
 }
@@ -19,12 +19,12 @@
 "#button":{
 	 backgroundImage: "/check.png",  
 	 right:"5%", 
-	 width:"14%", 
+	 width:"10%", 
+	 height: "80%",
 }
 
 "#label":{
 	text:"Category List" ,
 	color:"black", 
-	left:"5%",
-	font: {fontSize: 26,fontFamily: 'Helvetica Neue'},	
+	font: {fontSize: 22},	
 }

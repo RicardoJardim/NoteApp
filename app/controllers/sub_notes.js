@@ -2,18 +2,18 @@
 
 //CATCH ARGUMENTS
 var args = $.args;
-console.log(args);
 
 const alerted = require("alert");
 const database = require("database_js");
 const table = require("table");
 
 //QUERY THE DATABASE FOR TITLE AND COLOR WITH THE ID OF SELECTED NOTE
-var query =
+
+var result2 = database.database_call(
   "SELECT note.title,category.color FROM note,category WHERE note.category_id = category.id AND note.id=" +
-  args[0] +
-  "";
-var result2 = database.database_call(query);
+    args[0] +
+    ""
+);
 
 var title = result2.fieldByName("title");
 var colors = result2.fieldByName("color");
@@ -33,32 +33,33 @@ var topChildView = Ti.UI.createView({
   backgroundColor: "#e6e6e6",
 });
 
+var backButton = Ti.UI.createImageView({
+  image: "/arrow.png",
+  width: "10%",
+  left: "3%",
+});
+backButton.addEventListener("click", goToIndex);
+topChildView.add(backButton);
+
 //TOP LEFT LABEL
 var label = Ti.UI.createLabel({
   text: title,
   color: "black",
-  left: "5%",
   font: { fontSize: 26, fontFamily: Alloy.Globals.font },
+  width: "70%",
+  height: 50,
+  textAlign: "center",
 });
 topChildView.add(label);
 
 //TOP BOTTON
 var btn2 = Ti.UI.createButton({
   backgroundImage: "/add.png",
-  right: "2%",
+  right: "3%",
   height: "70%",
   width: "10%",
 });
 topChildView.add(btn2);
-
-//TOP BOTTON LABEl
-var addText = Ti.UI.createLabel({
-  text: "Add Note",
-  color: "black",
-  right: "14%",
-  font: { fontSize: 24, fontFamily: Alloy.Globals.font },
-});
-topChildView.add(addText);
 
 topView.add(topChildView);
 
@@ -78,18 +79,14 @@ topView.add(search);
 // EVENT LISTENER FOR THE SEARCH BAR
 search.addEventListener("change", function (e) {
   console.log(search.value);
+  let id = args[0];
 
   if (search.value == "") {
-    var query = "SELECT * FROM subnote WHERE note_id=" + args[0] + "";
-    populate(query);
+    populate(`SELECT * FROM subnote WHERE note_id=${id} `);
   } else {
     scroolView.setData([]);
-    var query =
-      "SELECT * FROM subnote WHERE note_id=" +
-      args[0] +
-      ' AND title LIKE "%' +
-      search.value +
-      '%" ';
+
+    let query = `SELECT * FROM subnote WHERE note_id=${id} AND title LIKE "%${search.value}" `;
     if (database.database_check(query)) {
       populate(query);
     }
@@ -98,11 +95,10 @@ search.addEventListener("change", function (e) {
 
 // EVENT LISTENER FOR THE ADD SUBNOTE BUTTON
 btn2.addEventListener("click", function () {
-  var val = args[0];
-  var sed = [val, colors];
-
-  console.log(sed);
-  var next_win = Alloy.createController("create_subnotes", sed).getView();
+  var next_win = Alloy.createController("create_subnotes", [
+    args[0],
+    colors,
+  ]).getView();
   next_win.open();
   next_win = null;
 });
@@ -118,8 +114,7 @@ var scroolView = Ti.UI.createTableView({
 });
 
 // QUERY ALL SUBNOTE WITH THE SELECTED NOTE
-var queryFirst = "SELECT * FROM subnote WHERE note_id=" + args[0] + "";
-populate(queryFirst);
+populate("SELECT * FROM subnote WHERE note_id=" + args[0] + "");
 
 // EVENT LITENER FOR OPEN A SUBNOTE
 scroolView.addEventListener("click", function (e) {
@@ -127,9 +122,11 @@ scroolView.addEventListener("click", function (e) {
   if ((e.source.apiName = "Ti.UI.View" && e.source.id != undefined)) {
     console.log(e.source.id);
 
-    var sed = [e.source.id, args[0], colors];
-    console.log(sed);
-    var next_win = Alloy.createController("view_subnote", sed).getView();
+    var next_win = Alloy.createController("view_subnote", [
+      e.source.id,
+      args[0],
+      colors,
+    ]).getView();
     next_win.open();
     next_win = null;
   }
@@ -199,8 +196,8 @@ function populate(query) {
 
 //ERASE MAIN NOTE
 function erase(e) {
-  database.database_call("DELETE FROM note WHERE id = " + args[0] + "");
-  alerted.note("Foi eliminado da database", 1);
+  database.database_call("DELETE FROM note WHERE id =" + args[0] + "");
+  alerted.note("The current group notes was deleted!", 1);
 
   goToIndex();
 }
@@ -216,9 +213,9 @@ Alloy.Globals.RenderSubNotesAgain = function () {
   populate("SELECT * FROM subnote WHERE note_id=" + args[0] + "");
 };
 
-var goToIndex = () => {
+function goToIndex() {
   var next_win = Alloy.createController("index").getView();
   next_win.open();
   next_win = null;
   $.sub_notes.close();
-};
+}

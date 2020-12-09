@@ -1,6 +1,7 @@
 <Alloy>
 	<Window id="category_list">
 		<View id="topView">
+			<ImageView class="back_button" id="back" onClick="goBack"/>
 			<Label id="label"></Label>
 			<Button id="button" onClick="confirm">
 				

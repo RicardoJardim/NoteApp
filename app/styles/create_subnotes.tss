@@ -1,8 +1,13 @@
-"#create_note":{
-	layout:'composite',
+"#create_subnotes":{
+	layout:'vertical',
+}
+
+"#back": {
+	top:"1%",	
 }
 
 "#view_create":{
+	top:"2%",
 	layout: "vertical",
 	width: '90%',
 	height: Titanium.UI.SIZE,
@@ -10,14 +15,17 @@
 	elevation: 10,
 }
 
-
 "#create":{
 	color: "black",
 	font: {
 		fontWeight: "semibold",
 		fontSize: 30,
-		fontFamily: 'Helvetica Neue'
+		fontFamily: "regularfont"	
 	},
+}
+
+"#cont":{
+	height: '50%',
 }
 
 "#save":{

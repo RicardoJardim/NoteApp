@@ -1,8 +1,9 @@
 "#create_note":{
-	layout:'composite',
+	layout:'vertical',
 }
 
 "#view_create":{
+	top:"2%",
 	backgroundColor:"#ffffff",
 	layout: "vertical",
 	width: '90%',
@@ -17,7 +18,7 @@
 	font: {
 		fontWeight: "semibold",
 		fontSize: 30,
-		fontFamily: 'Helvetica Neue'
+		fontFamily: "regularfont"	
 	},
 }
 
@@ -46,7 +47,11 @@
 	heigth: 100,
 	font: {
 		fontSize: 18,
-		fontFamily: 'Helvetica Neue'
+		fontFamily: "regularfont"	
 	},
 	right: "10%",
+}
+
+"#back": {
+	top:"1%",	
 }

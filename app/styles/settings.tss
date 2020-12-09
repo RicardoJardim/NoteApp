@@ -1,0 +1,8 @@
+
+"#settings" : {
+  layout: "vertical"
+}
+
+"#back": {
+	top:"1%",	
+}
